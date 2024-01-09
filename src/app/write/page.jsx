@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import { PlusCircleIcon, FileImageIcon } from "lucide-react"
+import { FileImageIcon } from "lucide-react"
 import ReactQuill from "react-quill"
 import { BounceLoader } from "react-spinners"
 
@@ -34,7 +34,6 @@ const WritePage = () => {
   const { status } = useSession()
   const router = useRouter()
 
-  const [open, setOpen] = useState(false)
   const [isImageLoading, setIsImageLoading] = useState(false)
   const [isPostLoading, setIsPostLoading] = useState(false)
 
@@ -55,21 +54,9 @@ const WritePage = () => {
         "state_changed",
         (snapshot) => {
           setIsImageLoading(true)
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          // console.log("Upload is " + progress + "% done")
-
-          // setIsImageLoading(false)
         },
         (error) => {
-          // switch (error.code) {
-          //   case "storage/unauthorized":
-          //     break
-          //   case "storage/canceled":
-          //     break
-          //   case "storage/unknown":
-          //     break
-          // }
+          console.log(error)
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -157,25 +144,19 @@ const WritePage = () => {
       </div>
 
       <div className={styles.editor}>
-        <button className={styles.button} onClick={() => setOpen(!open)}>
-          <PlusCircleIcon width={16} color="crimson" />
-        </button>
-
-        {open && (
-          <div className={styles.add}>
-            <input
-              type="file"
-              id="image"
-              onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
-            />
-            <button className={styles.addButton}>
-              <label htmlFor="image">
-                <FileImageIcon size={16} color="crimson" />
-              </label>
-            </button>
-          </div>
-        )}
+        <div className={styles.add}>
+          <input
+            type="file"
+            id="image"
+            onChange={(e) => setFile(e.target.files[0])}
+            style={{ display: "none", cursor: "pointer" }}
+          />
+          <button className={styles.addButton}>
+            <label htmlFor="image" style={{ cursor: "pointer" }}>
+              <FileImageIcon size={16} color="crimson" />
+            </label>
+          </button>
+        </div>
 
         <ReactQuill
           className={styles.textArea}
@@ -189,21 +170,23 @@ const WritePage = () => {
           className={styles.publishButton}
           onClick={handleSubmit}
           style={{
-            opacity: isPostLoading ? 0.5 : 1,
-            pointerEvents: isPostLoading ? "none" : "auto",
+            opacity: isPostLoading || !media ? 0.5 : 1,
+            pointerEvents: isPostLoading || !media ? "none" : "auto",
           }}
         >
           {isPostLoading ? <BounceLoader size={25} color="white" /> : "Publish"}
         </button>
       </div>
-
-      {/* {isPostLoading && (
-        <div className={styles.postLoader}>
-          <Loader size={150} absolute={false} />
-        </div>
-      )} */}
     </div>
   )
 }
 
 export default WritePage
+
+{
+  /* {isPostLoading && (
+  <div className={styles.postLoader}>
+    <Loader size={150} absolute={false} />
+  </div>
+)} */
+}

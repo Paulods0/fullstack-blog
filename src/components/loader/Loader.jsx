@@ -15,11 +15,10 @@ const Loader = ({ size, absolute = false }) => {
           }}
         >
           <FadeLoader color=" #DC143C" size={size} />
-          <p style={{ marginTop: 10 }}>Image is loading...</p>
         </div>
       ) : (
         <div>
-          <BounceLoader color=" #DC143C" size={size} />
+          <FadeLoader color=" #DC143C" size={size} />
         </div>
       )}
     </div>
