@@ -1,0 +1,11 @@
+.actions {
+  display: flex;
+  gap: 15px;
+
+  button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+}

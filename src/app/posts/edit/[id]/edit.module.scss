@@ -1,0 +1,139 @@
+.container {
+  .postLoader {
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  .inputContainer {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+    gap: 6px;
+
+    .inputRowContainer {
+      display: flex;
+      @media screen and (max-width: 1024px) {
+        display: none;
+      }
+
+      .postImageContainer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 10px;
+
+        @media screen and (max-width: 1024px) {
+          display: none;
+        }
+
+        .postImageWrapper {
+          width: 280px;
+          height: 240px;
+
+          .image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+
+    .select {
+      width: fit-content;
+      height: fit-content;
+      padding: 8px;
+      border-radius: 5px;
+      margin-left: 60px;
+      background-color: crimson;
+      border: none;
+      outline: none;
+      color: white;
+
+      // option {
+      //   color: white;
+      // }
+    }
+    .input {
+      padding: 50px;
+      font-size: 64px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: crimson;
+      // border-right: 1px solid crimson;
+
+      &::placeholder {
+        color: crimson;
+      }
+    }
+  }
+
+  .editor {
+    display: flex;
+    gap: 20px;
+    height: 700px;
+    position: relative;
+
+    .button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1px solid var(--textColor);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .add {
+      display: flex;
+      gap: 20px;
+      background-color: var(--bg);
+      position: absolute;
+      z-index: 999;
+      width: fit-content;
+      left: 50px;
+
+      .addButton {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid var(--textColor);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: transparent;
+      }
+    }
+
+    .textArea {
+      width: 70%;
+      height: 80%;
+    }
+  }
+  .publishButton {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    left: 0px;
+    padding: 16px 20px;
+    background-color: crimson;
+    color: white;
+    outline: none;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

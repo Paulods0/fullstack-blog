@@ -1,0 +1,84 @@
+:root {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
+}
+.dancing_font {
+  font-family: var(--dancing_Script), cursive;
+}
+
+body {
+  font-family: var(--inter);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dark {
+  --bg: #000;
+  --textColor: #ddd;
+  --softBg: #1f273a;
+  --softTextColor: #a6a6a6;
+}
+.light {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--textColor);
+}
+
+.wrapper {
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  // background-color: rebeccapurple;
+  padding-left: 80px;
+  padding-right: 80px;
+
+  @media screen and (max-width: 1536px) {
+    max-width: 1366px;
+  }
+  @media screen and (max-width: 1280px) {
+    max-width: 1024px;
+  }
+  @media screen and (max-width: 1024px) {
+    max-width: 768px;
+    padding-left: 40;
+    padding-right: 40;
+  }
+  @media screen and (max-width: 768px) {
+    max-width: 640px;
+  }
+  @media screen and (max-width: 640px) {
+    max-width: 475px;
+  }
+}
+
+.ql-container {
+  font-size: 28px !important;
+  color: crimson;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  color: crimson;
+}
